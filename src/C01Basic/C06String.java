@@ -83,25 +83,30 @@ public class  C06String {
 
 ////         a의 개수가 몇 개인지 출력
 //        String str2 = "abcdefgabaaa";
-//            int count = 0;
-//            for (int i = 0; i < str2.length(); i++) {
-//                    if (str2.charAt(i) == 'a') {
-//                            count++;
-//                    }
+//        int count = 0;
+//        for (int i = 0; i < str2.length(); i++) {
+//            if (str2.charAt(i) == 'a') {
+//                count++;
 //            }
-//            System.out.println(count);
+//        }
+//        System.out.println(count);
 
 ////        toCharArray : String 문자열을 char배열로 리턴
 //        //char[] chArr = str2.toCharArray();
-//        String str2 = "abcdefgabaaa";
-//        int count2 = 0;
-//        for (char c : str2.toCharArray()) {
-//            if (c=='a') count2++; //실행문이 한 줄 밖에 없을 때는 중괄호 생략 가능
+//        a의 개수는? (toCharArray()를 사용할 것)
+//        String str = "abcdefgabaaa";
+//        int count = 0;
+//        for (char q : str.toCharArray()) {
+//            if (q == 'a') {
+//                count++;
+//            }
 //        }
+//        System.out.println(count);
+
 
 ////        indexOf() : 특정 문자열의 위치(index) 반환, 가장 먼저 나오는 문자열의 위치 반환
-//        String st1 = "hello java java";
-//        System.out.println(st1.indexOf("java"));
+//        String st1 = "hello java java com pu ter";
+//        System.out.println(st1.indexOf("pu"));
 
 ////        contains : 특정 문자열이 포함되어 있는 지 여부(boolean)를 return
 //        String st1 = "hello java java";
@@ -118,29 +123,39 @@ public class  C06String {
 ////        프로그래머스 - 특정 문자 제거하기
 //        String my_string = "abcdef";
 //        String letter = "f";
-//        String answer1 = "";
-//        for (char h : my_string.toCharArray()) {
-//            if (h != letter.charAt(0)){
-//                answer1 += h;
-//            }
-//        }
-//        System.out.println(answer1);
-
-////        substring(a,b) : a이상 b미만의 index의 문자를 잘라 문자열 반환
-//        String st1 = "hello world";
-//        System.out.println(st1.substring(0,5)); //hello
-//        System.out.println(st1.substring(6, st1.length())); //world, 보통 끝에는 .length 사용
-
-////        프로그래머스 - 특정 문자 제거하기 (substring으로 풀어보기)
-//        String my_string = "abcdef";
-//        String letter = "f";
 //        String answer = "";
-//            for (int i = 0; i < my_string.length(); i++) {
-//            if(!my_string.substring(i, i+1).equals(letter)) {
-//                answer += my_string.substring(i, i + 1);
+//        for (int i = 0; i < my_string.length(); i++) {
+//            if (letter.charAt(0) != my_string.charAt(i)) {
+//                answer += my_string.charAt(i);
 //            }
 //        }
 //        System.out.println(answer);
+
+//        String my_string2 = "abcdef";
+//        String letter2 = "f";
+//        String answer2 = "";
+//        for (char c : my_string2.toCharArray()) {
+//            if (c != letter2.charAt(0)) {
+//                answer2 += c;
+//            }
+//        }
+//        System.out.println(answer2);
+
+////        substring(a,b) : a이상 b미만의 index의 문자를 잘라 문자열 반환
+//        String st1 = "hello world";
+//        System.out.println(st1.substring(0, 5));
+//        System.out.println(st1.substring(6, st1.length()));
+
+////        프로그래머스 - 특정 문자 제거하기 (substring으로 풀어보기)
+        String my_string = "abcdef";
+        String letter = "f";
+        String answer = "";
+        for (int i = 0; i < my_string.length(); i++) {
+            if(!my_string.substring(i, i+1).equals(letter)) {
+                answer += my_string.substring(i, i + 1);
+            }
+        }
+        System.out.println(answer);
 
 //        프로그래머스 - 가운데 글자 가져오기
 
