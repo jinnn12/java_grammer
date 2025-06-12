@@ -147,15 +147,15 @@ public class C05LoopStatement {
 //            System.out.println("소수가 아닙니다.");
 //        }
 ////        소수 구할 때 root를 기준으로 하면?
-        Scanner sc = new Scanner(System.in);
-        int input = sc.nextInt();
-        boolean check = false;
-        for (int i = 2; i <= Math.sqrt(input); i++) {
-            if (input % i == 0) {
-                check = true;
-                break;
-            }
-        }
+//        Scanner sc = new Scanner(System.in);
+//        int input = sc.nextInt();
+//        boolean check = true;
+//        for (int i = 2; i <= Math.sqrt(input); i++) {
+//            if (input % i == 0) {
+//                check = false;
+//                break;
+//            }
+//        }
 //        if(!check) {
 //            System.out.println("소수입니다.");
 //        } else {
@@ -179,7 +179,7 @@ public class C05LoopStatement {
 //            System.out.println(arr[i]);
 //        }
 ////        향상된 for문을 활용한 배열 접근 방식 : arr을 통째로 들고 와서 하나꺼내고 두개꺼내고 세개꺼내고...
-////        just 출력을 위한 용도이다.
+////        just 출력을 위한 용도이다. 총합, 평균 이런 거 구할 때 효율적
 //        for(int val : arr) {
 //            System.out.println(val);
 //        }
@@ -207,33 +207,33 @@ public class C05LoopStatement {
 //            }
 //        }
 
-//         라벨문 : 반복문에 이름을 붙이는 것.
-        loop1:
-        for (int i = 0; i < 10; i++) {
-            loop2:
-            for (int j = 0; j < 10; j++) {
-                if (true) {
-                    break loop1; //원하는 for문을 라벨문을 통해 종료 시킬 수 있다.
-                }
-            }
-        }
+////         라벨문 : 반복문에 이름을 붙이는 것.
+//        loop1:
+//        for (int i = 0; i < 10; i++) {
+//            loop2:
+//            for (int j = 0; j < 10; j++) {
+//                if (true) {
+//                    break loop1; //원하는 for문을 라벨문을 통해 종료 시킬 수 있다.
+//                }
+//            }
+//        }
 
 ////        이차원배열 : 배열 안에 배열
 //        int[][] arr = {{1, 2, 3}, {4, 5, 11}, {7, 8, 9}, {10, 11, 12}};
 //        System.out.println(arr[1][2]); //1번째 배열에 2번째 값을 찾는 것.
 
-//        숫자 11이 위치한 배열의 index값 출력 (1, 2) 또는 (3, 1)
-//        가장 먼저 찾아지는 11의 위치만 출력 (내부 for에서 break)
-        int[][] arr = {{1, 2, 3}, {4, 5, 11}, {7, 8, 9}, {10, 11, 12}};
-        loop1:
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                if (arr[i][j] == 11) {
-                    System.out.println("위치는 " + i + ", " + j); //sout을 어디서 했어야 할 지, 뭘 출력을 해야할지 헷갈림
-                    break;
-                }
-            }
-        }
+////        숫자 11이 위치한 배열의 index값 출력 (1, 2) 또는 (3, 1)
+////        가장 먼저 찾아지는 11의 위치만 출력 (내부 for에서 break)
+//        int[][] arr = {{1, 2, 3}, {4, 5, 11}, {7, 8, 9}, {10, 11, 12}};
+//        loop1:
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = 0; j < arr[i].length; j++) {
+//                if (arr[i][j] == 11) {
+//                    System.out.println("위치는 " + i + ", " + j); //sout을 어디서 했어야 할 지, 뭘 출력을 해야할지 헷갈림
+//                    break;
+//                }
+//            }
+//        }
 ////                라벨링없는 풀이
 //        boolean check=false;
 //        for(int i=0; i<arr.length; i++){
@@ -249,37 +249,37 @@ public class C05LoopStatement {
 //            }
 //        }
 
-//        라벨링 활용 문제풀이
-//        100 ~ 200까지 수 중에서 가장 작은 소수를 출력
-        for (int i = 100; i <= 200; i++) {
-            boolean check = false;
-            for (int j = 2; j * j <= i; j++) {
-                if (i % j == 0) { //소수가 아닌건 알겠으나 i가 소수가 아닌지, j가 소수가 아닌지 모르겠음
-                    break;
-                }
-            }
-            if (check == false) {
-                System.out.println(i + "가 소수입니다.");
-                break;
-            }
-        }
-
-        loop:
-        for (int i = 100; i < 201; i++) {
-            for (int j = 2; j < Math.sqrt(i)+1; j++) {
-                if (i % j == 0) {
-                    continue loop;
-                }
-            }
-            System.out.println(i);
-            break;
-        }
-
-
-
+////        라벨링 활용 문제풀이
+////        100 ~ 200까지 수 중에서 가장 작은 소수를 출력
+//        for (int i = 100; i <= 200; i++) {
+//            boolean check = false;
+//            for (int j = 2; j * j <= i; j++) {
+//                if (i % j == 0) { //소수가 아닌건 알겠으나 i가 소수가 아닌지, j가 소수가 아닌지 모르겠음
+//                    break;
+//                }
+//            }
+//            if (check == false) {
+//                System.out.println(i + "가 소수입니다.");
+//                break;
+//            }
+//        }
+//
+//        loop:
+//        for (int i = 100; i < 201; i++) {
+//            for (int j = 2; j < Math.sqrt(i)+1; j++) {
+//                if (i % j == 0) {
+//                    continue loop;
+//                }
+//            }
+//            System.out.println(i);
+//            break;
+//        }
+//
+//
+//
+//    }
+//}
+//
     }
 }
-
-
-
 
