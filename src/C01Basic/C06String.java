@@ -63,7 +63,7 @@ public class  C06String {
 //        System.out.println(str2.equals(str3));
 //        System.out.println(str2.equalsIgnoreCase(str3)); // Case라는 게 대소문자 구분으로 쓰인다.
 
-////        length : 문자열의 길이 출력
+////        length : 문자열의 길이 출력, 문자열은 .length(), 배열.lenght 소괄호 x
 //        String str1 = "hello1 World1 Java2";
 //        System.out.println(str1.length());
 ////        charAt(n) : 특정 index(n번째)의 문자(char)값을 리턴, char로 받아야 함!
@@ -113,7 +113,7 @@ public class  C06String {
 //        System.out.println(st1.contains("hello")); //true
 //        System.out.println(st1.contains("world")); //false
 
-////        문자열 더하기 : +=
+////        문자열 더하기 : += / StringBuffer:웹개발(Thread-safe), StringBuilder(Thread ?):문제풀이
 //        String st1 = "hello";
 //        st1 += " world";
 //        st1 += '1'; // String에 char를 더하면 String으로 더해짐
@@ -147,15 +147,15 @@ public class  C06String {
 //        System.out.println(st1.substring(6, st1.length()));
 
 ////        프로그래머스 - 특정 문자 제거하기 (substring으로 풀어보기)
-        String my_string = "abcdef";
-        String letter = "f";
-        String answer = "";
-        for (int i = 0; i < my_string.length(); i++) {
-            if(!my_string.substring(i, i+1).equals(letter)) {
-                answer += my_string.substring(i, i + 1);
-            }
-        }
-        System.out.println(answer);
+//        String my_string = "abcdef";
+//        String letter = "f";
+//        String answer = "";
+//        for (int i = 0; i < my_string.length(); i++) {
+//            if(!my_string.substring(i, i+1).equals(letter)) {
+//                answer += my_string.substring(i, i + 1);
+//            }
+//        }
+//        System.out.println(answer);
 
 //        프로그래머스 - 가운데 글자 가져오기
 
@@ -209,7 +209,7 @@ public class  C06String {
 //            String[] arr = a.split(":");
 //            System.out.println(Arrays.toString(arr));
 //
-//            String b = "a b c  d";
+//            String b = "a b c  d"; //StringTokenizer를 사용해도 된다. C01InputOutput을 확인해보자!
 //            String[] arr2 = b.split(" ");
 //            String[] arr3 = b.split("\\s+"); // \s:공백, \n:줄바꿈 외우자
 //            System.out.println(Arrays.toString(arr2));
@@ -217,8 +217,8 @@ public class  C06String {
 
 ////            null과 공백의 차이
 //            String st1 = null; //null은 String이 아님
-//            String st2 = "";
-//            String st3 = " ";
+//            String st2 = ""; //빈문자열, isEmpty
+//            String st3 = " "; //공백, isBlank
 //            System.out.println(st1==st2); //false
 //            //System.out.println(st1.isEmpty()); // NullPointerException  발생
 //            System.out.println(st2.isEmpty()); // true
@@ -247,7 +247,7 @@ public class  C06String {
 //            StringBuffer sb = new StringBuffer();
 ////            append는 맨 뒤에 문자열을 더하는 메서드
 //            sb.append("java");
-//            sb.append("\n");
+//            sb.append("\n"); //wn
 //            sb.append("python");
 //            sb.append("\n");
 //            sb.append("javascript");
