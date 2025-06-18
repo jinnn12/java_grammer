@@ -16,7 +16,7 @@ public class  C06String {
 //        String str1 = new String("hello");
 //        String str2 = new String("hello");
 //        System.out.println(str1 == str2); //false, str1, 2의 메모리 주소를 비교하는 것이라 false!
-//        System.out.println(str1.equals(str2)); //.equals 메서드를 사용하자
+//        System.out.println(str1.equals(str2)); //문자끼리의 비교는 .equals 메서드를 사용하자
 //
 ////        WrapperClass : 기본형 타입을 Wrapping한 클래스
 //        int i1 = 10;
@@ -63,57 +63,57 @@ public class  C06String {
 //        System.out.println(str2.equals(str3));
 //        System.out.println(str2.equalsIgnoreCase(str3)); // Case라는 게 대소문자 구분으로 쓰인다.
 
-////        length : 문자열의 길이 출력, 문자열은 .length(), 배열.lenght 소괄호 x
+////        length : 문자열의 길이 출력, 문자열은 .length(), 배열.length 소괄호 x
 //        String str1 = "hello1 World1 Java2";
 //        System.out.println(str1.length());
 ////        charAt(n) : 특정 index(n번째)의 문자(char)값을 리턴, char로 받아야 함!
 //        char ch1 = str1.charAt(0);
+//        System.out.println(ch1);
 
 ////        위 문자열의 소문자 알파벳의 개수 구하기
 ////        for, length, charAt 활용! a<= ? <= z
 //        String str1 = "hello1 World1 Java2";
-//        int total = 0;
+//        int sum = 0;
 //        for (int i = 0; i < str1.length(); i++) {
-//                if ('a' < str1.charAt(i) && str1.charAt(i) < 'z') {
-//                        total++;
-//                }
+//            if ('a' <= str1.charAt(i) && str1.charAt(i) <= 'z') {
+//                sum++;
+//            }
 //        }
-//            System.out.println(total);
-
+//        System.out.println(sum);
 
 ////         a의 개수가 몇 개인지 출력
 //        String str2 = "abcdefgabaaa";
-//        int count = 0;
+//        int sum = 0;
 //        for (int i = 0; i < str2.length(); i++) {
 //            if (str2.charAt(i) == 'a') {
-//                count++;
+//                sum++;
 //            }
 //        }
-//        System.out.println(count);
+//        System.out.println(sum);
 
 ////        toCharArray : String 문자열을 char배열로 리턴
 //        //char[] chArr = str2.toCharArray();
 //        a의 개수는? (toCharArray()를 사용할 것)
 //        String str = "abcdefgabaaa";
-//        int count = 0;
-//        for (char q : str.toCharArray()) {
-//            if (q == 'a') {
-//                count++;
+//        int sum = 0;
+//        char[] cArr = str.toCharArray();
+//        for (char a : cArr) {
+//            if (a == 'a') {
+//                sum++;
 //            }
 //        }
-//        System.out.println(count);
+//        System.out.println(sum);
 
-
-////        indexOf() : 특정 문자열의 위치(index) 반환, 가장 먼저 나오는 문자열의 위치 반환
+////        indexOf() : 특정 문자열의 위치(index) 반환, 가장 먼저 나오는 문자열의 위치 index 반환
 //        String st1 = "hello java java com pu ter";
-//        System.out.println(st1.indexOf("pu"));
+//        System.out.println(st1.indexOf("java"));
 
 ////        contains : 특정 문자열이 포함되어 있는 지 여부(boolean)를 return
 //        String st1 = "hello java java";
 //        System.out.println(st1.contains("hello")); //true
 //        System.out.println(st1.contains("world")); //false
 
-////        문자열 더하기 : += / StringBuffer:웹개발(Thread-safe), StringBuilder(Thread ?):문제풀이
+////        문자열 더하기 : += / StringBuffer:웹개발(Thread-safe), StringBuilder(Thread unsafe):문제풀이
 //        String st1 = "hello";
 //        st1 += " world";
 //        st1 += '1'; // String에 char를 더하면 String으로 더해짐
@@ -131,15 +131,17 @@ public class  C06String {
 //        }
 //        System.out.println(answer);
 
-//        String my_string2 = "abcdef";
-//        String letter2 = "f";
-//        String answer2 = "";
-//        for (char c : my_string2.toCharArray()) {
-//            if (c != letter2.charAt(0)) {
-//                answer2 += c;
+//        String my_string = "abcdef";
+//        String letter = "f";
+//        String answer = "";
+//        for (char p : my_string.toCharArray()) {
+//            if (p != letter.charAt(0)) {
+//                answer += p;
 //            }
 //        }
-//        System.out.println(answer2);
+//        System.out.println(answer);
+
+
 
 ////        substring(a,b) : a이상 b미만의 index의 문자를 잘라 문자열 반환
 //        String st1 = "hello world";
@@ -151,18 +153,27 @@ public class  C06String {
 //        String letter = "f";
 //        String answer = "";
 //        for (int i = 0; i < my_string.length(); i++) {
-//            if(!my_string.substring(i, i+1).equals(letter)) {
+//            if (!my_string.substring(i, i + 1).equals(letter)) {
 //                answer += my_string.substring(i, i + 1);
 //            }
 //        }
 //        System.out.println(answer);
 
 //        프로그래머스 - 가운데 글자 가져오기
+//        String s = "abcde";
+//        int len = s.length();
+//        String answer = "";
+//        if (len % 2 == 0) {
+//            answer += s.substring(len / 2 - 1, len / 2 + 1);
+//        } else {
+//            answer += s.substring(len / 2, len / 2 + 1);
+//        }
+//        System.out.println(answer);
 
 ////        trim, strip : 문자열 양쪽 끝에 공백 제거하는 메서드
 //        String st1 = " hello world   ";
-//        String trim1 = st1.trim();
-//        String strip1 = st1.strip();
+//        String trim1 = st1.trim(); // 스페이스 공백만 제거 가능
+//        String strip1 = st1.strip(); // 더 넓은 범위의 문자(ascii)도 제거 가능
 //        System.out.println(trim1);
 //        System.out.println(strip1);
 
@@ -279,7 +290,16 @@ public class  C06String {
 //            sb.append(st1.charAt(i));
 //        }
 //        System.out.println(sb);
-//
+
+////        문자열 비교
+//        String s1 = "hello";
+//        String s2 = "dello";
+//        String s3 = "hello";
+//        System.out.println(s1.compareTo(s2)); //양수 (h 아스키코드 - d 아스키코드 => 양수), 문자열 minus 연산
+//        System.out.println(s2.compareTo(s1)); //음수 (d 아스키코드 - h 아스키코드 => 음수)
+//        System.out.println(s1.compareTo(s3)); //0
+
+
 ////      프로그래머스 - 문자열 밀기
 //        String A = "ohell";
 //        String B = "ohell";

@@ -7,11 +7,11 @@ public class C08List {
 ////        List선언 방법
 //        ArrayList<String> myList1 = new ArrayList<String>();
 //        ArrayList<String> myList2 = new ArrayList<>();
-//
+
 ////        List선언 방법2 : 가장 일반적인 방법
 //        List<String> myList3 = new ArrayList<>(); // List가 ArrayList, LinkedList의 인터페이스
-//
-////        초기값 세팅방법1. 개별 data add
+
+////        초기값 세팅방법1. 개별 data add (.add)
 //        myList3.add("java");
 //        myList3.add("python");
 //        myList3.add("c++");
@@ -24,10 +24,11 @@ public class C08List {
 //
 //        int[] intArr = {10, 20, 30}; //원시자료형이라 Arrays.asList() 불가능
 //        List<Integer> myIntList = new ArrayList<>();
-//        for (int i : intArr) {
-//            myIntList.add(i);
+//        for (int a : intArr) {
+//            myIntList.add(a);
 //        }
-//
+//        System.out.println(intArr);
+
 ////        add메서드 : 리스트에 값을 하나씩 추가하는 메서드
 //        List<Integer> myList = new ArrayList<>();
 //        myList.add(10);
@@ -62,8 +63,8 @@ public class C08List {
 ////        clear : 요소 전체 삭제
 //        myList.clear();
 //        System.out.println(myList.isEmpty()); //clear해서 true
-//
-////        incexOf : 특정 값을 찾아 index return (중복의 경우 가장 먼저 나오는 인덱스 값 리턴)
+
+////        indexOf : 특정 값을 찾아 index return (중복의 경우 가장 먼저 나오는 인덱스 값 리턴)
 //        List<Integer> myList2 = new ArrayList<>();
 //        myList2.add(10);
 //        myList2.add(20);
@@ -107,17 +108,17 @@ public class C08List {
 //        myList.get(1).add(4); // [[1,2], [3,4]]
 //        myList.add(new ArrayList<>());
 
-//        for문을 이용해서 [[1,2,3], [4,5,6], [7,8,9], [10,11,12]] 이중리스트 생성
-        List<List<Integer>> myList = new ArrayList<>();
-        int num = 1;
-        for (int i = 0; i < 4; i++) {
-            myList.add(new ArrayList<>());
-            for (int j = 0; j < 3; j++) {
-                myList.get(i).add(num);
-                num++;
-            }
-        }
-        System.out.println(myList);
+////        for문을 이용해서 [[1,2,3], [4,5,6], [7,8,9], [10,11,12]] 이중리스트 생성
+//        List<List<Integer>> myList = new ArrayList<>();
+//        int num = 1;
+//        for (int i = 0; i < 4; i++) {
+//            myList.add(new ArrayList<>());
+//            for (int j = 0; j < 3; j++) {
+//                myList.get(i).add(num);
+//                num++;
+//            }
+//        }
+//        System.out.println(myList);
 
 ////        리스트 안에 배열도 만들 수 있다
 ////        [{1,2}, {1,2,3}, {1,2,3,4}]

@@ -39,24 +39,38 @@ public class C07Array {
 //
 //        Arrays.fill(arr, ""); // Arrays.~ -> 클래스 메서드
 
-////      85, 65, 90으로 구성된 int배열을 선언하고, 총합과 평균을 구해보시오,
+////      85, 65, 90으로 구성된 int 배열을 선언하고, 총합과 평균을 구해보시오,
 //        int[] arr = {85, 65, 90};
 //        int sum = 0;
 //        int avg = 0;
 //        System.out.println(arr[0] + arr[1] + arr[2]);
 //        System.out.println((arr[0] + arr[1] + arr[2]) / arr.length);
-//
+
+//        int[] arr = {85, 65, 90};
 //        int total = 0;
 //        for (int i = 0; i < arr.length; i++) {
 //            total += arr[i];
 //        }
 //        System.out.println("총합은 " + total);
-//        System.out.println("평균은 " + (double) total / arr.length);
+//        System.out.println("평균은 " + total / arr.length);
 
 ////      배열의 최댓값, 최솟값 : 시작 숫자 아무거나 고정, 이후 시작값 잡고 하나하나 비교
-//        int[] arr2 = {10, 20, 30, 12, 8, 17};
-//        int max1 = Integer.MIN_VALUE;
-//        int min1 = Integer.MAX_VALUE;
+//        int[] arr = {10, 20, 30, 12, 8, 17};
+//        int max = Integer.MIN_VALUE;
+//        int min = Integer.MAX_VALUE;
+//
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] < min) {
+//                min = arr[i];
+//            }
+//        }
+//        System.out.println(min);
+
+
+
+
+
+
 //        for (int i = 0; i < arr2.length; i++) {
 //            if (arr2[i] > max1) {
 //                max1 = arr2[i];
@@ -68,7 +82,7 @@ public class C07Array {
 //        System.out.println(max1);
 //        System.out.println(min1);
 //        System.out.println(Arrays.stream(arr2).max()); // .max를 사용하면 max를 구할 수 있다.
-//
+
 //        for (int i = 0; i < arr2.length; i++) {
 //            if (arr2[i] < min1) {
 //                min1 = arr2[i]
@@ -90,12 +104,13 @@ public class C07Array {
 //        }
 //        System.out.println(min);
 
-////       배열의 자리 바꾸기
+////       배열의 자리 바꾸기 (index 0, 1 자리 바꾸기)
 //        int[] arr = {20, 10, 30};
-//        int temp = arr[0]; //잠깐 킵해놓아야 함. arr[0] 값 유실 방지!
-//        arr[0] = arr[1];
-//        arr[1] = temp;
+//        int temp = arr[1];
+//        arr[1] = arr[0];
+//        arr[0] = temp;
 //        System.out.println(Arrays.toString(arr));
+
 
 ////        배열 뒤집기
 //        int[] arr = {10, 20, 30, 40, 50};
@@ -297,16 +312,16 @@ public class C07Array {
 //        }
 
 //        프로그래머스 - 행렬의 덧셈 // 덧셈을 어떻게 행위해야 하는가
-        int[][] arr1 = {{1,2}, {2,3}};
-        int[][] arr2 = {{3,4}, {5,6}};
-        int[][] result = new int[2][2];
-
-        for (int i = 0; i < arr1.length; i++) {
-            for (int j = 0; j < arr2.length; j++) {
-                result[i][j] = arr1[i][j] + arr2[i][j];
-            }
-        }
-        System.out.println(Arrays.deepToString(result));
+//        int[][] arr1 = {{1,2}, {2,3}};
+//        int[][] arr2 = {{3,4}, {5,6}};
+//        int[][] result = new int[2][2];
+//
+//        for (int i = 0; i < arr1.length; i++) {
+//            for (int j = 0; j < arr2.length; j++) {
+//                result[i][j] = arr1[i][j] + arr2[i][j];
+//            }
+//        }
+//        System.out.println(Arrays.deepToString(result));
 
 //        프로그래머스 - K번째 수
 
