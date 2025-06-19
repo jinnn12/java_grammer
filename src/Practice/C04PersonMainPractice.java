@@ -16,12 +16,12 @@ public class C04PersonMainPractice {
 //        printMember1(name2, email2, age2);
 
 //        코드가 너무 복잡해짐. 그룹핑이 필요하지 않을까?
-        Person p1 = new Person();
-        p1.setName("John");
-        p1.setEmail("jon@naver.com");
-        p1.setAge(28);
-
-        printMember1(p1.getName(), p1.getEmail(), p1.getAge());
+//        Person p1 = new Person();
+//        p1.setName("John");
+//        p1.setEmail("jon@naver.com");
+//        p1.setAge(28);
+//
+//        printMember1(p1.getName(), p1.getEmail(), p1.getAge());
 
 
     }

@@ -3,6 +3,7 @@ import java.util.*;
 // 생성자 : 객체가 실행될 때 생성되는 메서드
 public class C07Constructor {
     public static void main(String[] args) {
+//        p1.name = hong, p1.setName -> 생성자
 //        캘린더 객체 생성 : 연도, 월, 일 세팅
 
 //        캘린더 객체 출력 : "오늘은 xxx연도 xx월 xx일 입니다."

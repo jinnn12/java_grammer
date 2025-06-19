@@ -10,11 +10,11 @@ public class C05Scope {
         System.out.println(v2); // 클래스 변수니까 scope 메서드에서 바뀐 값 사용
 
 //        객체의 유효범위
-        Person p1 = new Person();
-        p1.setName("KIM");
-        p1.setEmail("kim@naver.com");
-        p1.setAge(20);
-        scope2(p1);
+//        Person p1 = new Person();
+//        p1.setName("KIM");
+//        p1.setEmail("kim@naver.com");
+//        p1.setAge(20);
+//        scope2(p1);
 
 
 
@@ -30,10 +30,10 @@ public class C05Scope {
         System.out.println(v1); //scope 안에서는 20이므로 20출력
     }
 
-    public static void scope2(Person p1) {
-        p1.setAge(30);
-        System.out.println(p1.printPerson());
-    }
+//    public static void scope2(Person p1) {
+//        p1.setAge(30);
+//        System.out.println(p1.printPerson());
+//    }
 
 }
 
