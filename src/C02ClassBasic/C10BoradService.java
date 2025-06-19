@@ -43,7 +43,7 @@ public class C10BoradService {
                 Author author = new Author(name, email, id, pw);
                 authorList.add(author);
 
-                System.out.println(authorList);
+                System.out.println(author);
 
             } else if (input.equals("2")) { //회원 전체 목록 조회
                 System.out.println("회원 전체 목록 조회");
@@ -58,11 +58,16 @@ public class C10BoradService {
                 System.out.println("아이디를 입력하세요");
                 String id = sc.nextLine();
 
+                Author inputID = null;
+
                 for(Author a : authorList){
                     if(a.getId().equals(id)){
-                        System.out.println(a);
+                        inputID = a;
+                        break;
                     }
                 }
+                System.out.println(inputID);
+
 
             } else if (input.equals("4")) {
                 System.out.println("게시글 작성");
@@ -76,9 +81,15 @@ public class C10BoradService {
                 String contents = sc.nextLine();
                 System.out.println("작성이 완료되었습니다.");
 
-                Author author = authorList.get(0);
+                Author myAuthor = null;
+                for (Author pp : authorList) {
+                    if (pp.getEmail().equals(email)) {
+                        myAuthor = pp;
+                        break;
+                    }
+                }
 
-                Post post = new Post(email, title, contents, author);
+                Post post = new Post(email, title, contents, myAuthor);
                 postList.add(post);
 
 
@@ -95,9 +106,9 @@ public class C10BoradService {
                 System.out.println("이메일(혹은 아이디)을 입력하세요");
                 String email = sc.nextLine();
 
-                for (Author c : authorList) {
-                    if (c.getEmail().equals(email)) {
-                        System.out.println("작성자 이메일 : " + c.getEmail() + " 게시글 상세 : "+ c.getId() );
+                for (Post c : postList) {
+                    if (c.author.getEmail().equals(email)) {
+                        System.out.println(c.author.getPosts());
                     } else {
                         System.out.println("게시글 작성자가 없습니다.");
                     }
@@ -107,7 +118,6 @@ public class C10BoradService {
 
         }
     }
-
 }
 
 class Author {
@@ -157,23 +167,26 @@ class Author {
     @Override
     public String toString() {
         return "Author{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", id='" + id + '\'' +
-                ", pw='" + pw + '\'' +
-                ", posts=" + posts +
+                "이름 : '" + name + '\'' +
+                ", 이메일 : '" + email + '\'' +
+                ", 아이디 : '" + id + '\'' +
+                ", 비밀번호 : '" + pw + '\'' +
+                ", 글쓴 개수 : " + posts.size() +
                 '}';
     }
 }
 
 class Post {
+    public static int idCount = 1;
     String title;
     String contents;
     String email;
+    int id;
     Author author;
 
 //    생성자
     public Post(String email, String title, String contents, Author author) {
+        this.id = idCount++;
         this.email = email;
         this.title = title;
         this.contents = contents;
