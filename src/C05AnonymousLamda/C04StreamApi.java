@@ -1,9 +1,7 @@
 package C05AnonymousLamda;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import javax.swing.text.html.Option;
+import java.util.*;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -122,15 +120,156 @@ public class C04StreamApi {
 //        String firstSt = Arrays.stream(stArr).filter(a->a.length()>=5).findFirst().get(); // 없을수도 있으니 검증한번하라고 경고를 줌
 //        System.out.println(firstSt);
 
-//        주의사항 : 제네릭의 타입소거 (효율성을 위해 런타임 시점에 제네릭이 소거됨)
-//        자바의 런타임 시점에 <String>과 같은 제네릭의 타입소거 발생.
-//        제네릭의 타입소거로 인해, toArray를 통해 바로 새로운 String 배열을 만드는 것은 불가.
-//        Intstream은 Stream<Int>가 아니라 IntStream 이므로 제네릭 타입소거 문제가 발생하지 않는다.
-        String[] stArr = {"hello", "java", "world"};
-//        String[] answer1 = Arrays.stream(stArr).filter(a -> a.length() >= 5).toArray();
-        String[] answer = Arrays.stream(stArr).filter(a -> a.length() >= 5).toArray(a -> new String[a]); // 여기서 a는 배열선언을 위한 사이즈
+////        주의사항 : 제네릭의 타입소거 (효율성을 위해 런타임 시점에 제네릭이 소거됨)
+////        자바의 런타임 시점에 <String>과 같은 제네릭의 타입소거 발생.
+////        제네릭의 타입소거로 인해, toArray를 통해 바로 새로운 String 배열을 만드는 것은 불가.
+////        Intstream은 Stream<Int>가 아니라 IntStream 이므로 제네릭 타입소거 문제가 발생하지 않는다.
+//        String[] stArr = {"hello", "java", "world"};
+////        String[] answer1 = Arrays.stream(stArr).filter(a -> a.length() >= 5).toArray();
+//        String[] answer = Arrays.stream(stArr).filter(a -> a.length() >= 5).toArray(a -> new String[a]); // 여기서 a는 배열선언을 위한 사이즈
+//
+////        메서드 참조 : 하나의 메서드만을 호출하는 경우 매개변수를 제거한 형식. "매개변수 제거"가 목적 클래스명::메서드명
+////        엄연히 Stream / StreamApi 는 차이가 있다.
+//        Arrays.stream(stArr).forEach( System.out::println); //sout에서 out은 System의 static이너클래스인가???
+//        String[] answer2 = Arrays.stream(stArr).filter(a->a.length()>=5).toArray(a->new String[a]); // new는 생성자를 호출하는 연산자
+//        String[] answer3 = Arrays.stream(stArr).filter(a->a.length()>=5).toArray(String[]::new); //왼쪽에는 클래스명 / 오른쪽에는 메서드명
+//
+////        StreamApi 실습
+////        List에 Student 객체 4개 담기 : {"kim", 20}, {"choi", 32}, {"lee", 35}, {"park", 22}
+//        List<Student2> student2List = new ArrayList<>();
+//        student2List.add(new Student2("kim", 20));
+//        student2List.add(new Student2("choi", 32));
+//        student2List.add(new Student2("lee", 35));
+//        student2List.add(new Student2("park", 22));
+//
+////        1) 모든 객체의 평균 나이 (.avg)
+//        double avg = student2List.stream().mapToInt(a-> a.getAge()).average().getAsDouble(); //평균은 값이 무조건 있어야 하기 때문에 getAs, 없을수도 있으면 안됨
+////        double avg2 = student2List.stream().mapToDouble(a-> a.getAge()).average().getAsDouble();
+//        System.out.println(avg);
+//
+////        2) 정렬을 통한 가장 나이 어린 사람 찾기
+////        int min = student2List.stream().mapToInt(a -> a.getAge()).min().getAsInt(); // 나이는 뽑을 수 있으나, 사람 찾기는 어렵다
+//        // 오름차순 후 findFirst 하면 됨
+//        Student2 s1 = student2List.stream().sorted(((o1, o2) -> o1.getAge() - o2.getAge())).findFirst().get();
+//
+//        System.out.println(s1);
+//
+////        3) 30대인 사람들의 이름만 모아서 새로운 String배열에 담기
+//        //map을 통해 Student2 타입에서 String 타입으로 변환
+//        String[] arr2 = student2List.stream().filter(a -> a.getAge() >= 30).map(a -> a.getName()).toArray(String[]::new);
+//        System.out.println(Arrays.toString(arr2));
+
+///        Optional 객체 : 특정 객체에 "값이 없을 지도 모른다"는 것을 명시적으로 표현
+///        장점 : 한 번 검증을 하게 끔 만들어줌
+//        Scanner sc = new Scanner(System.in);
+//        String input = sc.nextLine();
+//        if(input != null && input.length() > 10) {} // 명시적으로 null이 없다고 해줘야... , 왼쪽부터 연산이므로 왼쪽에 써주는것도 중요
+
+//        String st1 = null;
+//        if (st1 != null) { // null이 아니라고 명시적으로 표시
+//            System.out.println(st1.compareTo("hello"));
+//        } else {
+//            System.out.println("값이 없습니다.");
+//        }
+//
+//        Optional<String> opt1 = Optional.ofNullable(null); // 값이 있는지 없는지 한 번 검증하는 과정?
+//        if (opt1.isPresent()) {
+//            System.out.println(opt1.get().compareTo("hello"));
+//        } else {
+//            System.out.println("값이 없습니다.");
+//        }
+
+////        Optional 객체 생성 방법 3가지
+//        Optional<String> opt1 = Optional.empty(); // 비어있는 Optional 객체 생성할 때 사용하는 방법 (.empty() -> 비어있는걸 만듦)
+//        Optional<String> opt2_1 = Optional.ofNullable(null); // 비어있는 Optional 객체 생성 (있을 수도 있고 없을 수도 있는 것, null)
+//        Optional<String> opt2_2 = Optional.ofNullable("hello"); // 값이 있는 Optional 객체 생성 (있을 수도 있고 없을 수도 있는 것, 값 hello)
+//        Optional<String> opt3 = Optional.of("hello"); // 값이 있는 Optional 객체 생성
+
+////        Optional 객체 처리 방법 4가지
+////        방법1. isPresent()로 확인 후에 get()
+//        if (opt2_1.isPresent()) {
+//            System.out.println(opt2_1.get());
+//        } else {
+////            System.out.println(opt2_1.get()); // No value present 에러 발생
+//            System.out.println("값이 없읍니다");
+//        }
+//
+////        방법2. orElse() : 값이 있으면 있는 값 return, 없으면 지정한 값 return
+//        System.out.println(opt2_1.orElse("값이 없습니다.")); //값이 있으면 꺼내고 없으면 other 리턴
+//        System.out.println(opt2_2.orElse("값이 없습니다.")); //값이 있으면 꺼내고 (여기선 hello 리턴) 없으면 other 리턴
+//
+////        방법3. orElseGet() : 값이 있으면 있는 값 return, 없으면 람다함수 실행
+//        System.out.println(opt2_1.orElseGet(() -> new String("값이 없습니다."))); // 새로운 String을 만드는 것, 값이 없으면 람다실행
+
+////        방법4. (가장 많이 사용) orElseThrow : 값이 있으면 있는 값 return, 없으면 지정된 예외 강제 발생. (일부러 에러 발생 시키기?)
+////        개발에서 사용자에게 적절한 메세지 전달 목적과 의도된 코드 중단을 목표로 강제로 예외 발생시키는 경우는 매우 많음
+//        // System.out.println(opt2_1.orElseThrow(()->new RuntimeException("예외 : 값이 없습니다"))); // 에러 발생 -> 의도한 에러
+//        System.out.println(opt2_1.get()); //에러 발생 -> 의도치않은 에러
+
+//        Optional 객체 예시1
+        List<Student2> studentList3 = new ArrayList<>();
+
+///        평균 구하기 방법 1
+//        OptionalDouble age = studentList.stream().mapToInt(a->a.getAge()).average(); // getAsDouble을 사용을 안하면되는걸 이제 알게됐지?
+//        if (age.isPresent()) {
+//            System.out.println(age.getAsDouble());
+//        } else {
+//            throw new NoSuchElementException("값이 없습니당"); // 내가 의도한 에러 직접 발생
+//        }
+
+////        평균 구하기 방법 2
+//        OptionalDouble age2 = studentList.stream().mapToInt(a -> a.getAge()).average();
+//        age2.orElseThrow(()->new NoSuchElementException("값이 진짜 없습니다"));
+//        //한줄로바꿔봐
 
 
+////        Optional 객체 예시2 (List를 DB로 생각하기, CRUD -> R (회원목록조회, 회원상세조회))
+//        studentList3.add(new Student2("kim", 20));
+//        studentList3.add(new Student2("choi", 32));
+//        studentList3.add(new Student2("lee", 35));
+//        studentList3.add(new Student2("park", 22));
+//        System.out.println("조회하고자 하는 student의 index 번호를 입력해주세요.");
+//        Scanner sc = new Scanner(System.in);
+//        int indexNumber = Integer.parseInt(sc.nextLine());
+////        System.out.println(studentList3.get(indexNumber)); // index는 0~3까지만 있음, 4, 5 .. 입력하면 IndexOutOfBoundsException 발생
+//
+////        index 범위가 list 안에 있으면 Optional.ofNullable 또는 of, ofEmpty
+//        Optional<Student2> optStudent;
+//        if (studentList3.size() <= indexNumber) {
+//            optStudent = Optional.empty(); // .empty() 없는 값을 할당한다
+//        } else {
+//            optStudent = Optional.of(studentList3.get(indexNumber));
+//        }
+//        System.out.println(studentList3); // 회원목록조회 (Optional로 만들 이유가 없음, 빈 경우 new ArrayList<>()로 초기화 돼있기 때문에 그냥 빈값 return하면 되기 때문)
+//        System.out.println(optStudent.orElseThrow(() -> new NoSuchElementException("입력하신 index는 없는 index번호입니다."))); // 상세조회 (빈값이 조회되면 안되기때문에 Optional로 만들어야 함)
 
+//        if (studentList3.size() <= indexNumber) {
+//            optStudent = Optional.ofNullable(null);
+//        } else {
+//            optStudent = Optional.ofNullable(studentList3.get(indexNumber));
+//        }
+
+    }
+}
+class Student2 {
+    private String name;
+    private int age;
+
+    public Student2(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public String toString() {
+        return "student{" + "name='" + name + ", age=" + age + '}';
     }
 }
