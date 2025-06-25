@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-//<> : 제네릭
+//<> : 제네릭 : 클래스, 메서드 일반화하는것 -> List<String, Integer >
 public class C04GenericMain {
     public static void main(String[] args) {
         String[] stArr = {"java", "python", "C"};
