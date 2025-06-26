@@ -185,7 +185,7 @@ public class C04StreamApi {
 //        Optional<String> opt2_2 = Optional.ofNullable("hello"); // 값이 있는 Optional 객체 생성 (있을 수도 있고 없을 수도 있는 것, 값 hello)
 //        Optional<String> opt3 = Optional.of("hello"); // 값이 있는 Optional 객체 생성
 
-////        Optional 객체 처리 방법 4가지
+////        Optional 객체 처리 방법 4가지 (방법1, 방법4 정도만 알아두자)
 ////        방법1. isPresent()로 확인 후에 get()
 //        if (opt2_1.isPresent()) {
 //            System.out.println(opt2_1.get());

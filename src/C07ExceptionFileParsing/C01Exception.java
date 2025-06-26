@@ -1,6 +1,11 @@
 package C07ExceptionFileParsing;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.InvalidParameterException;
 import java.sql.SQLException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class C01Exception {
@@ -43,55 +48,58 @@ public class C01Exception {
 ////        왜 이렇게까지 catch 분기처리를 하는가? -> 사용자에게 명확한 메세지를 주기 위해
 //        System.out.println("hello world");
 
-//        의도된 예외 강제 발생 : 특정 시점에 프로그램을 강제 중지.
-//        프로그램을 통해 DB에 저장해야되는데, 강제로 예외를 발생해야 하는 이유 ? ?
-        System.out.println("로그인을 위한 비밀번호를 입력해주세요.");
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+////        의도된 예외 강제 발생 : 특정 시점에 프로그램을 강제 중지.
+////        프로그램을 통해 DB에 저장해야되는데, 강제로 예외를 발생해야 하는 이유 ? ?
+//        System.out.println("로그인을 위한 비밀번호를 입력해주세요.");
+//        Scanner sc = new Scanner(System.in);
+//        String input = sc.nextLine();
 //        login(input);
+//
+////       checkedException의 경우에는 예외처리를 위임받게 되면 반드시 예외처리를 하거나 다시 throws를 해야 함. . .
+////       checked 를 try - catch 해서 unchecked를 throw를 해야 함 _> rollback을 위해?
+//        String result = null;
+//        fileRead(C:\Users\JIN\Desktop\itelliJ\java_grammer\src\C07ExceptionFileParsing\test.txt);
+//
+//
+////    throws 키워드를 통해 예외를 위임한다.
+////    다만, unchecked 예외에서는 예외처리가 강제가 아니므로, throws가 큰 의미는 없다.
+////    그러나 checked 예외에서는 예외처리가 강제되므로, throws가 의미가 있음.
+//
+////    throws IllegalArgumentException : 안 써도 되는데 가독성을 위해 명시적으로 써줘야 함.
+//// 핵심 로직만 수행하는 메서드 : service 계층 , 인터페이스 : controller 계층, 상태관리 : entity
+//
+//
+//    static boolean login(String password) throws IllegalArgumentException, NoSuchElementException {
+//        if (password.equals("1234")) {
+//            return true;
+//        } else if (password == null) {
+////            예외를 강제발생시킴으로써 이 시점에서 해당 메서드 강제 종료 (클래스가 종료되는 건 아님!!)
+////            예외는 호출한 메서드로 반환됨
+////            -> 예외는 기본적으로 해당 메서드를 호출한 곳으로 전파된다.
+//            throw new IllegalArgumentException("비밀번호를 잘못 입력하였습니다.");
+////            return false; //의미가 없어짐
+//        } else if (!password.equals("1234")) {
+//            throw new NoSuchElementException("비밀번호가 존재하지 않습니다.");
+//        }
+//    }
 
-//       checkedException의 경우에는 예외처리를 위임받게 되면 반드시 예외처리를 하거나 다시 throws를 해야 함. . .
-//        checked 를 try - catch 해서 unchecked를 throw를 해야 함 _> rollback을 위해?
-        try {
-            login2(input);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("환영합니다.");
-    }
-
-//    throws 키워드를 통해 예외를 위임한다.
-//    다만, unchecked 예외에서는 예외처리가 강제가 아니므로, throws가 큰 의미는 없다.
-//    그러나 checked 예외에서는 예외처리가 강제되므로, throws가 의미가 있음.
-
-//    throws IllegalArgumentException : 안 써도 되는데 명시적으로 써줘야 함.
-// 핵심 로직만 수행하는 메서드 : service 계층 , 인터페이스 : controller 계층, 상태관리 : entity
-
-
-    static boolean login(String password) throws IllegalArgumentException {
-        if (password.equals("1234")) {
-            return true;
-        } else {
-//            예외를 강제발생시킴으로써 이 시점에서 해당 메서드 강제 종료 (클래스가 종료되는 건 아님!!)
-//            예외는 호출한 메서드로 반환됨
-//            -> 예외는 기본적으로 해당 메서드를 호출한 곳으로 전파된다.
-            throw new IllegalArgumentException("비밀번호를 잘못 입력하였습니다.");
-//            return false; //의미가 없어짐
-        }
-    }
-
-    static boolean login2(String password) throws Exception{
-        if (password.equals("1234")) {
-            return true;
-        } else {
-//            checkedException은 예외처리가 강제된다.
-//            해당메서드 내에서 예외처리를 하든, 명시적으로 throws를 통해 호출 메서드에 위임(호출메서드에서 try catch)을 하든 예외처리를 해야함.
-                throw new SQLException("비밀번호를 잘못 입력하였습니다.");
-//            return false; //의미가 없어짐
-
-
-        }
-    }
+//    static String fileRead(String path) throws IOException {
+//        Path filePath = Path.get(path);
+////        checked exception의 경우 예외 처리가 강제된다.
+//////        방법1. checked를 try catch 한 이후 unchecked 예외를 다시 throw
+////        String text = null;
+////        try {
+////            text = Files.readString(filePath);
+////        } catch (IOException e) {
+//////            보통은 코드 중지 목적으로 unchecked exception으로 throw
+////            throw new RuntimeException("입출력 과정에서 예외가 발생");
+////        }
+//
+////        방법2. 현재 메서드를 호출하는 쪽으로 예외를 위임(throws / throw 구분)
+//        String text = Files.readString(filePath);
+//        return text;
+//    }
 }
+}
+
+
