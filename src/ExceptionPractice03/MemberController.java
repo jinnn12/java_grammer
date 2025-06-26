@@ -17,8 +17,14 @@ public class MemberController {
                 String email = sc.nextLine();
                 System.out.println("비밀번호를 입력해주세요.");
                 String password = sc.nextLine();
-
-                memberService.register(name, email, password);
+                if (password.length() < 4) {
+                    System.out.println("비밀번호가 너무 짧습니다.");
+                }
+                try {
+                    memberService.register(name, email, password);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
 
 
 
