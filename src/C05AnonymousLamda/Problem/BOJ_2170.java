@@ -1,6 +1,5 @@
-package C05AnonymousLamda;
+package C05AnonymousLamda.Problem;
 
-import java.util.*;
 import java.io.*;
 public class BOJ_2170 {
     public static void main(String[] args) throws IOException{

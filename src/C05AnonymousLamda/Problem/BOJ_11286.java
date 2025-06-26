@@ -1,4 +1,4 @@
-package C05AnonymousLamda;
+package C05AnonymousLamda.Problem;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
