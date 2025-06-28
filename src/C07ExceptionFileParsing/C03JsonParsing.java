@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.*;
 
 // 역직렬화 (parsing) : readValue, readTree
+// 기본생성자 + getter 필수!
 public class C03JsonParsing {
     public static void main(String[] args) throws IOException {
 //        ObjectMapper : json 직렬화, 역직렬화를 위한 라이브러리
@@ -29,7 +30,7 @@ public class C03JsonParsing {
 ////        Path filePath2 = Paths.get("src/C07ExceptionFileParsing/myjson1.json");
 ////        String st2 = Files.readString(filePath2);
 ////        List<Student> studentList = o1.readValue(st2, ???) // List 클래스도 아니고 Student 클래스도 아니고, 자료구조 너 대체 뭐냐?
-//
+
 ////      사용법2.트리구조의 JsonNode로 변환 : JsonNode 객체명 = o1.readTree(문자열);
 ////      복잡한 json 자료구조일 경우 트리구조의 JsonNode 사용 (노드 안에서 노드 안에서 노드 . . .)
 //        JsonNode jsonNodes = o1.readTree(st1);
